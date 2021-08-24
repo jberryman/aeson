@@ -127,6 +127,8 @@ decodeHex x
   | otherwise = throwDecodeError
 
 unescapeText' :: ByteString -> Text
+unescapeText' _ = error "FIXME for utf8 text"
+    {-
 unescapeText' bs = runText $ \done -> do
     dest <- A.new len
 
@@ -244,6 +246,7 @@ writeAndReturn dest pos char res = do
     write dest pos char
     return (pos + 1, res)
 {-# INLINE writeAndReturn #-}
+-}
 
 throwDecodeError :: a
 throwDecodeError =

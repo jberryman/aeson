@@ -328,7 +328,8 @@ jstring_ = do
     Nothing           -> fail "string without end"
     Just DOUBLE_QUOTE -> A.anyWord8 $> txt
     Just w | w < 0x20 -> fail "unescaped control character"
-    _                 -> jstringSlow s
+    _ -> fail "temporarily only supporting ASCII to test out UTF8 text"
+ -- _                 -> jstringSlow s
 
 -- | The input is assumed to contain only 7bit ASCII characters (i.e. @< 0x80@).
 --   We use TE.decodeLatin1 here because TE.decodeASCII is currently (text-1.2.4.0)
